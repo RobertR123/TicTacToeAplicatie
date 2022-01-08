@@ -36,11 +36,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Jucator1Score = (TextView) findViewById(R.id.Jucator1Score);
-        Jucator2Score = (TextView) findViewById(R.id.Jucator2Score);
-        StatusJucator = (TextView) findViewById(R.id.StatusJucator);
+        Jucator1Score = (TextView) findViewById(R.id.PlayerOneScore);
+        Jucator2Score = (TextView) findViewById(R.id.PlayerTwoScore);
+        StatusJucator = (TextView) findViewById(R.id.PlayerStatus);
 
-        ResetareJoc = (Button) findViewById(R.id.ResetareJoc);
+        ResetareJoc = (Button) findViewById(R.id.ResetGame);
         for(int i=0; i < buttons.length; i++){
             String buttonID = "btn_" + i;
             int resourceID = getResources().getIdentifier(buttonID, "id", getPackageName());
@@ -78,27 +78,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if(JucatorActiv){
                 Jucator1ScoreCount++;
                 updatePlayerScore();
-                Toast.makeText(this, "Jucator1 a castigat!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Player One Won!", Toast.LENGTH_SHORT).show();
                 playAgain();
             }else{
                 Jucator2ScoreCount++;
                 updatePlayerScore();
-                Toast.makeText(this, "Jucator2 a castigat!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Player Two Won!", Toast.LENGTH_SHORT).show();
                 playAgain();
 
             }
 
         }else if(rundaCount == 9){
                 playAgain();
-                Toast.makeText(this, "Remiza!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Draw!", Toast.LENGTH_SHORT).show();
         }else {
             JucatorActiv = !JucatorActiv;
                  }
         if(Jucator1ScoreCount > Jucator2ScoreCount){
-            StatusJucator.setText("Jucator1 Castiga!");
+            StatusJucator.setText("Player One is Winning!");
 
         }else if(Jucator2ScoreCount > Jucator1ScoreCount){
-            StatusJucator.setText("Jucator2 Castiga!");
+            StatusJucator.setText("Player Two is Winning!");
 
         }else
             StatusJucator.setText("");
